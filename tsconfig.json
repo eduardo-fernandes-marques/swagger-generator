@@ -24,9 +24,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["src/typings/", "node_modules/@types"]
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"],
-  "files": ["src/typings/express/index.d.ts"]
+  "exclude": ["node_modules"]
 }

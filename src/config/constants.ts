@@ -1,4 +1,3 @@
-import EcsMeta from "~/ecs-meta.json";
 import applicationDev from "~/properties/application-dev.json";
 
 type LogLevel =
@@ -26,34 +25,10 @@ export const isProd = () => process.env.NODE_ENV === "production";
 export const config = {
   apiPath: "api",
   swaggerRoute: "/docs",
-  apiName: EcsMeta.service_name,
-  roles: ["developer", "product_owner"],
   script: process.env.npm_lifecycle_event,
   serverPort: process.env.SERVER_PORT || "8080",
   apiVersion: process.env.MAJOR_VERSION || "v0",
   loggerLevel: process.env.LOGGER_LEVEL || ("debug" as LogLevel),
-  jaeger: {
-    serviceName: process.env.OTEL_JAEGER_SERVICE_NAME || "jaeger-service",
-    endpoint: (() => {
-      let url: string | URL =
-        process.env.OTEL_JAEGER_ENDPOINT || "http://localhost:14268/";
-
-      if (!/^https?:\/\//i.test(url)) {
-        url = `http://${url}`;
-      }
-
-      url = new URL("/api/traces", url);
-
-      url.port = "14268";
-
-      return url.toString();
-    })(),
-  },
-};
-
-export const ERROR_MESSAGES = {
-  INVALID_SEARCH: "Busca inválida",
-  INVALID_REQUEST: "Requisição inválida",
 };
 
 export type ApplicationType = "ORGANIZATION";

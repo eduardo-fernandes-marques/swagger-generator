@@ -1,9 +1,9 @@
-export class Schema {
+export class Error {
   public details?: any;
   public message?: string;
   public status: number = 500;
 
-  constructor(props: Schema) {
+  constructor(props: Error) {
     Object.assign(this, props);
   }
 }

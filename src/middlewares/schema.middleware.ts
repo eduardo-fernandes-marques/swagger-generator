@@ -1,7 +1,7 @@
 import { ValidationError, ObjectSchema, Schema } from "joi";
 import { NextFunction, Request, Response } from "express";
 
-import { Schema as SchemaError } from "#/models/errors/schema.error";
+import { Error } from "#/models/error";
 
 type Joi<T> = {
   value: T;
@@ -91,7 +91,7 @@ const handleSchema = <T>(
     );
 
     return next(
-      new SchemaError({
+      new Error({
         status: 422,
         message: friendlyMsg,
         details: errorDetails,

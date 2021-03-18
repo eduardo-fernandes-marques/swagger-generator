@@ -1,8 +1,8 @@
 import { HTTPError, RequestError } from "got";
 import { Request, Response, NextFunction } from "express";
 
+import { Error } from "#/models/error";
 import { isProd } from "#/config/constants";
-import { Schema as SchemaError } from "#/models/errors/schema.error";
 
 import { createLogger } from "./logger.middleware";
 
@@ -15,7 +15,7 @@ export const error = (
   /* istanbul ignore next */
   if (!isProd()) createLogger.error(error);
 
-  if (error instanceof SchemaError) {
+  if (error instanceof Error) {
     return response
       .status(error.status)
       .json({ message: error.message || error.details });
