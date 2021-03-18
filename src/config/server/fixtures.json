@@ -1,0 +1,18 @@
+{
+  "service": {
+    "organization": {
+      "entity": {
+        "id": "00001",
+        "code": "0001",
+        "type": "TYPE",
+        "parentId": "000002",
+        "child": [
+          {
+            "id": "000003",
+            "name": "Name"
+          }
+        ]
+      }
+    }
+  }
+}
